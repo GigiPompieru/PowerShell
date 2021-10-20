@@ -22,9 +22,10 @@ do {
 }
 Until ( $luni.DayOfWeek -eq "Monday" )
 $duminica = $luni.AddDays(6)
+$y = Get-date $luni -Format "yyyy"
 $l = Get-date $luni -Format "dd.MM.yyyy"
 $d = Get-date $duminica -Format "dd.MM.yyyy"
-$file = "https://www.e-distributie.com/content/dam/e-distributie/outages/pdf/Muntenia/2021/Intreruperi%20programate%20in%20zona%20Muntenia%20$l%20-%20$d.pdf"
+$file = "https://www.e-distributie.com/content/dam/e-distributie/outages/pdf/Muntenia/$y/Intreruperi%20programate%20in%20zona%20Muntenia%20$l%20-%20$d.pdf"
 
 $text = convert-PDFtoText $file
 $text | Out-File "output.txt"
